@@ -28,8 +28,7 @@ resource "aws_iam_role" "iam_for_lambda_dynamo" {
       "Principal": {
         "Service": "lambda.amazonaws.com"
       },
-      "Effect": "Allow",
-      "Sid": ""
+      "Effect": "Allow"
     }
   ]
 }
