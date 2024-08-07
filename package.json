@@ -1,0 +1,65 @@
+{
+  "name": "geocoding-api",
+  "version": "1.0.0",
+  "description": "The Geocoding API is an enterprise level application for forward and reverse geocoding across the Org.",
+  "author": "Data Engineering, tkoufakis@zondahome.com, ramit@zondahome.com",
+  "license": "ISC",
+  "main": "handler.js",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "mkdir -p build/terraform/dist  && cp -r ./*.js build/terraform/dist &&  cp -r ./node_modules build/terraform/dist && cp -r app build/terraform/dist/node_modules ",
+    "compress": "cd build/terraform/dist/ && zip -r ../../../build/terraform/dist/nodejs.zip node_modules/*",
+    "test": "mocha --reporter=spec test/**/*test.js",
+    "test:coverage": "c8 mocha test/**/*test.js",
+    "test:checkcoverage": "c8 --check-coverage mocha test/**/*test.js",
+    "lint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zondahome/geocoding-api.git"
+  },
+  "keywords": [
+    "Geocoding"
+  ],
+  "bugs": {
+    "url": "https://zondahome.atlassian.net/jira/software/c/projects/DATAOPS/boards/279"
+  },
+  "homepage": "https://github.com/zondahome/geocoding-api#readme",
+  "dependencies": {
+    "config": "^3.3.12",
+    "got": "^14.4.1",
+    "sequelize": "^6.37.3",
+    "winston": "^3.13.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.6.0",
+    "@types/chai": "^4.3.16",
+    "@types/mocha": "^10.0.7",
+    "c8": "^10.1.2",
+    "chai": "^5.1.1",
+    "eslint": "^9.6.0",
+    "globals": "^15.8.0",
+    "http-request-mock": "^1.8.25",
+    "mocha": "^10.6.0",
+    "nyc": "^17.0.0"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "include": [
+      "app/**/*.js"
+    ],
+    "exclude": [
+      "test/**/*"
+    ],
+    "reporter": [
+      "html",
+      "lcov",
+      "text",
+      "text-summary"
+    ],
+    "report-dir": "coverage"
+  }
+}
