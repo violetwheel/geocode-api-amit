@@ -26,6 +26,12 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::466725796063:role/github_actions_role
           aws-region: ap-south-1
+     
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
