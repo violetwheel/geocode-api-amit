@@ -52,12 +52,7 @@ jobs:
       - name: Terraform Validate
         id: validate
         run: terraform validate  -no-color
-
-      # Run a terraform plan
-      - name: Terraform plan
-        id: plan
-        run: terraform plan -no-color
-
+        
       - name: Terraform Destroy
         id: destroy
         run: terraform destroy -auto-approve
