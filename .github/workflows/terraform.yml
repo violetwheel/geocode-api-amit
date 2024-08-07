@@ -1,9 +1,5 @@
 name: "Terraform CI CD"
-
-on:
-  push:
-    branches: [ "main" ]
-  pull_request:
+on: workflow_dispatch
 
 permissions:
   id-token: write
