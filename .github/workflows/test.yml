@@ -1,0 +1,20 @@
+name: "Terraform CI CD"
+on: workflow_dispatch
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set TOKEN based on environment
+        if: inputs.environment == 'development'
+        run: echo "TOKEN=${{ secrets.MY_PASS }}" >> $GITHUB_ENV
+
+      - name: USE
+        run: echo $GITHUB_ENV
